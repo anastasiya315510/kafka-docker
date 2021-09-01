@@ -16,6 +16,6 @@ import org.springframework.stereotype.Service;
 public class KafkaConsumer {
     @KafkaListener(topics = "my-cdc-output-topic",groupId = "my_group_id")
     public void getMessage(KafkaRecord record){
-    log.info(String.format("consumer record -> %s", record));
+    log.info(String.format("consumer record -> %s", record.getHeaders().getStreamPosition()));
     }
 }

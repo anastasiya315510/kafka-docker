@@ -30,8 +30,8 @@ public class KafkaController {
     public void writeMessageToTopic(@RequestBody KafkaRecord record){
         KafkaRecord build = KafkaRecord.builder()
                 .pk(record.getPk())
-                .data(LocalDateTime.now())
-                .beforeData(record.getData())
+                .beforeData(record.getBeforeData())
+                .data(record.getData())
                 .headers(HeaderKafkaRecord.builder()
                         .streamPosition(record.getHeaders().getStreamPosition())
                         .operation(record.getHeaders().getOperation())
